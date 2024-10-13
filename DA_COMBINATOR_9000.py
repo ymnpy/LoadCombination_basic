@@ -33,7 +33,7 @@ class Sources():
             elems=pid2eid[prop]
             for lcid_mech,dfish_mech in self.mech_op2.cquad4_force.items():
                 for lcid_ther,dfish_ther in self.ther_op2.cquad4_force.items():
-                    if str(lcid_mech)[1:3]==str(lcid_ther)[1:3]:
+                    if "put a condition here":
                         df_mech_f=dfish_mech.dataframe.query('ElementID in @elems')
                         df_ther_f=dfish_ther.dataframe.query('ElementID in @elems')
                         
@@ -41,10 +41,10 @@ class Sources():
                         nyy=self.do_addition(df_mech_f["my"],df_ther_f["my"])    
                         nxy=self.do_addition(df_mech_f["mxy"],df_ther_f["mxy"])    
                         
-                    if int(str(lcid_ther)[1:3])%2==0: 
-                        lcid_combined=str(lcid_mech)+"_HOT"
+                    if "put a condition here": 
+                        lcid_combined=str(lcid_mech)+"_H"
                     else:
-                        lcid_combined=str(lcid_mech)+"_COLD"
+                        lcid_combined=str(lcid_mech)+"_C"
                     
                     ll.append((prop,lcid_mech,lcid_ther,lcid_combined,nxx,nyy,nxy))
         
@@ -64,4 +64,4 @@ ll=source.do_combine(given_prop)
 
 #OUTPUT
 df_out=pd.DataFrame(ll,columns=['PID','LCID_M','LCID_T','LCID','NXX','NYY','NXY'])
-df_out.to_excel("combined_stuff.xlsx")
+df_out.to_excel("combined_loads.xlsx")
